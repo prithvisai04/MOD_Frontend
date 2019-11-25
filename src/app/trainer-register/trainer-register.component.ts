@@ -20,6 +20,9 @@ export class TrainerRegisterComponent implements OnInit {
   TrainerRegister: FormGroup;
   skillData: Object;
   submitted = false;
+  result1;
+  techName;
+  linked;
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
@@ -78,27 +81,29 @@ export class TrainerRegisterComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log("results");
     this.submitted = true;
-    if (this.TrainerRegister.invalid) {
-      return;
-    }
+    
 
-    var result = {
-      firstName: this.TrainerRegister.value.firstName,
-      lastName: this.TrainerRegister.value.lastName,
-      userName: this.TrainerRegister.value.userName,
+    this.result1 = {
+      
+       
+      mentorName: this.TrainerRegister.value.userName,
       email: this.TrainerRegister.value.email,
-      contactNumber: this.TrainerRegister.value.contactNumber,
+      mentorPhoneNo: this.TrainerRegister.value.contactNumber,
+      startTime:this.TrainerRegister.value.firstName,
+      endTime:this.TrainerRegister.value.lastName,
       password: this.TrainerRegister.value.Passwords.password,
-      linkedinUrl: this.TrainerRegister.value.linkedinUrl,
-      yearOfExperience: this.TrainerRegister.value.yearOfExperience,
-      trainerTechnology: this.TrainerRegister.value.trainerTechnology,
-      role: 2
+      linkedIn: this.linked,
+      experience: this.TrainerRegister.value.yearOfExperience,
+      mentorProfile:"THis is the Trainer Which is Having Experience of 3 years",
+      primaryTechnology: this.techName,
+      mentorBlock:false
     };
 
-    alert(JSON.stringify(this.TrainerRegister.value));
-    
-    this.auth.saveUser(result).subscribe(data =>
+    //alert(JSON.stringify(this.TrainerRegister.value));
+    console.log("results"+this.result1);
+    this.auth.saveMentor(this.result1).subscribe(data =>
       {
   
         console.log(data);

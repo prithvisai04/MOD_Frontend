@@ -9,28 +9,7 @@
                         <div class="form-group col">
                             <form class="form-signin" [formGroup]="TrainerRegister" autocomplete="off"
                                 (submit)="onSubmit()">
-                                <div class="form-row">
-                                    <div class="form-group col required">
-                                        <label><b>First Name</b></label>
-                                        <input class="form-control" formControlName="firstName">
-                                        <small class="text-danger"
-                                            *ngIf="TrainerRegister.get('firstName').touched && TrainerRegister.get('firstName').errors?.required">This
-                                            field is mandatory</small>
-                                        <small class="text-danger"
-                                            *ngIf="TrainerRegister.get('firstName').touched && TrainerRegister.get('firstName').errors?.pattern">firstName
-                                            cannot have special characters or digits</small>
-                                    </div>
-                                    <div class="form-group col required">
-                                        <label><b>Last Name</b></label>
-                                        <input class="form-control" formControlName="lastName">
-                                        <small class="text-danger"
-                                            *ngIf="TrainerRegister.get('lastName').touched && TrainerRegister.get('lastName').errors?.required">This
-                                            field is mandatory</small>
-                                        <small class="text-danger"
-                                            *ngIf="TrainerRegister.get('lastName').touched && TrainerRegister.get('lastName').errors?.pattern">lastName
-                                            cannot have special characters or digits</small>
-                                    </div>
-                                </div>
+                                
 
                                 <div class="form-group required">
                                     <label><b>User Name</b></label>
@@ -86,9 +65,22 @@
                                     </div>
                                 </div>
 
+                                <div class="form-row">
+                                    <div class="form-group col required">
+                                        <label><b>Start Time</b></label>
+                                        <input class="form-control" type="number" formControlName="firstName">
+                                        
+                                    </div>
+                                    <div class="form-group col required">
+                                        <label><b>End Time</b></label>
+                                        <input class="form-control"  type="number" formControlName="lastName">
+                                        
+                                    </div>
+                                </div>
+
                                 <div class="form-group required">
                                     <label><b>Linkedin Url</b></label>
-                                    <input class="form-control" formControlName="linkedinURL">
+                                    <input class="form-control" [(ngModel)]="linked"formControlName="linkedinURL">
                                     <small class="text-danger"
                                         *ngIf="TrainerRegister.get('linkedinURL').touched && TrainerRegister.get('linkedinURL').errors?.required">This
                                         field is mandatory</small>
@@ -109,8 +101,8 @@
                                 </div>
                                 <div class="form-group required">
                                     <label><b>Technology</b></label>
-                                    <select formControlName="trainerTechnology" class="form-control rounded">
-                                        <option *ngFor="let t of skillData" [value]="t.name">{{t.name}}</option>
+                                    <select formControlName="trainerTechnology" [(ngModel)]="techName" class="form-control rounded">
+                                        <option *ngFor="let t of skillData" >{{t.technologyName}}</option>
                                     </select>
                                     <small class="text-danger"
                                         *ngIf="TrainerRegister.get('trainerTechnology').touched && TrainerRegister.get('trainerTechnology').errors?.required">This
@@ -135,7 +127,7 @@
                                 <div class="form-row my-1">
                                     <div class="form-group col-md-12">
                                         <button class="btn btn-lg btn-primary btn-block login"
-                                            [disabled]="!TrainerRegister.valid">Register</button>
+                                            >Register</button>
                                     </div>
                                 </div>
                                 <div class="text-center p-2">
@@ -152,3 +144,4 @@
         </div>
     </div>
 </div>
+{{result1|json}}

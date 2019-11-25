@@ -59,7 +59,7 @@
 
                                 <div class="form-group required">
                                     <label><b>Contact Number</b></label>
-                                    <input class="form-control" formControlName="contactNumber">
+                                    <input type=number class="form-control" formControlName="contactNumber">
                                     <small class="text-danger"
                                         *ngIf="UserRegister.get('contactNumber').touched && UserRegister.get('contactNumber').errors?.required">This
                                         field is mandatory</small>

@@ -48,19 +48,20 @@ export class UserRegisterComponent implements OnInit {
 
     var result = 
     {
-        firstName:this.UserRegister.value.firstName,
-        lastName:this.UserRegister.value.lastName,
+        //userName:this.UserRegister.value.firstName,
+        //lastName:this.UserRegister.value.lastName,
         userName:this.UserRegister.value.userName,
-        email:this.UserRegister.value.email,
-        contactNumber:this.UserRegister.value.contactNumber,
+        userEmail:this.UserRegister.value.email,
+        userPhoneNo:this.UserRegister.value.contactNumber,
         password:this.UserRegister.value.Passwords.password,
-        role:3 
+        userBlock:false,
+        
     }
 
     this.auth.saveUser(result).subscribe(data =>
     {
-
-      console.log(data);
+      // console.log(userName+" "+userEmail+" "+userPhoneNo+" "+password+" "+userBlock)
+      console.log(result);
       if(data.message == "Registered Successfully")
       {
         this.messageService.add({

@@ -33,7 +33,7 @@ export class AuthService {
   }
 
   public getAllSkills() {
-    return this.http.get("https://localhost:44307/api/getAllSkills");
+    return this.http.get("http://localhost:12345/Technology/GetAllTechnology");
   }
 
   public getAllTraining() {
@@ -76,7 +76,14 @@ export class AuthService {
 
   public saveUser(regData) {
     return this.http
-      .post("https://localhost:44307/api/saveUser", regData, httpOptions1)
+      .post("http://localhost:12345/User/PostUser", regData, httpOptions1)
+      .pipe(map(data1 => (data1 = JSON.parse(JSON.stringify(data1)))));
+  }
+
+  public saveMentor(regData) {
+    console.log(regData+"this is inside mentor post")
+    return this.http
+      .post("http://localhost:12345/Mentor/MentorPost", regData, httpOptions1)
       .pipe(map(data1 => (data1 = JSON.parse(JSON.stringify(data1)))));
   }
  
